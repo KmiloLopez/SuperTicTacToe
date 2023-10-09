@@ -8,11 +8,14 @@ import confetti from "canvas-confetti";
 //
 import { TURNS, WINNERCOMBOS } from "../../utils/constants/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setIndexMiniBoard, setTurnforPlayer } from "../../store/indexSlice";
-import { setfinalBoardPosition } from "../../store/winnerSlice";
+import { clearIndexMiniBoard, setIndexMiniBoard, setTurnforPlayer } from "../../store/indexSlice";
+import { clearFinalBoard, setfinalBoardPosition } from "../../store/winnerSlice";
+import IsLastSquare from "../IsLastScuare/IsLastScuare";
 
-const App = ({ bigBoardIndex, restrictThis }) => {
-  const [board, setBoard] = useState(Array(9).fill(null));
+
+const App = ({ bigBoardIndex, restrictThis, mainBoxes }) => {
+ // const board =[...mainBoxes];
+  const [board, setBoard] = useState(mainBoxes);
   const [turn, setTurn] = useState(TURNS.X);
   const [winner, setWinner] = useState(null);
   const [cellsTaken, setCellsTaken] = useState(1);
@@ -20,14 +23,25 @@ const App = ({ bigBoardIndex, restrictThis }) => {
   const { finalBoard } = useSelector((state) => state.winner);
   const dispatch = useDispatch();
   const {reset} = useSelector((state)=>state.reset)
+
   //reseting game
    //if(reset===true){
+   // console.log("reset en miniboard")
+   //}
   //setBoard(Array(9).fill(null));
   //   setTurn(TURNS.X);
     // setWinner(null);
   //   setCellsTaken(1);
-  //   console.log("bigBoardIndex",bigBoardIndex);
-//}
+   
+
+const resetGame = () => {
+  setMainBoxes(Array(9).fill(null));
+  setWinner(null);
+  dispatch(clearIndexMiniBoard(11));
+  dispatch(clearFinalBoard(Array(9).fill(null)));
+  
+};
+
   const checkWinner = (boardToCheck) => {
     //comparamos el nuevo tablero con los combos ganadores
     for (const combo of WINNERCOMBOS) {
@@ -85,7 +99,7 @@ const App = ({ bigBoardIndex, restrictThis }) => {
   };
   return (
     <>
-      {/* <h1>SUPER TIC TAC TOE</h1> */}
+      
       <MainBoard>
         {board.map((element, index) => {
           if (element != null) {
@@ -100,6 +114,7 @@ const App = ({ bigBoardIndex, restrictThis }) => {
                 turn={turn}
                 classN={classN}
                 restrictThis={restrictThis}
+                bigBoardIndex={bigBoardIndex}
               />
             );
           } else {
@@ -113,11 +128,15 @@ const App = ({ bigBoardIndex, restrictThis }) => {
                 turn={turn}
                 classN={classN}
                 restrictThis={restrictThis}
+                bigBoardIndex={bigBoardIndex}
               />
             );
           }
         })}
       </MainBoard>
+      
+ 
+      
     </>
   );
 };

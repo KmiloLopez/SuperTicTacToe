@@ -10,7 +10,6 @@
 Install dependencies:
 
 ```
-npm i
 ```
 
 Now, you can start a local web server by running:

@@ -10,7 +10,6 @@ import { clearIndexMiniBoard } from "../store/indexSlice";
 import { clearFinalBoard } from "../store/winnerSlice";
 import { resetGameOver, setResetGame } from "../store/resetSice";
 
-
 const Main = () => {
   const dispatch = useDispatch();
   const [mainBoxes, setMainBoxes] = useState(new Array(9).fill(null));
@@ -18,8 +17,8 @@ const Main = () => {
   const [winner, setWinner] = useState(null);
 
   const miniBoardIndex = useSelector((state) => state.index.miniBoard);
-  const {finalBoard} = useSelector((state) => state.winner);
-  const {reset} = useSelector((state)=>state.reset)
+  const { finalBoard } = useSelector((state) => state.winner);
+  const { reset } = useSelector((state) => state.reset);
 
   const checkWinner = (boardToCheck) => {
     //comparamos el nuevo tablero con los combos ganadores
@@ -38,59 +37,71 @@ const Main = () => {
     }
     return null;
   };
-  useEffect(()=>{
+  useEffect(() => {
     const winnerIs = checkWinner(finalBoard);
-    console.log("the winner is",winnerIs);
+    console.log("the winner is", winnerIs);
     setWinner(winnerIs);
-// verify winner in finalBoard based on winner combos
+    // verify winner in finalBoard based on winner combos
+  }, [finalBoard]);
 
-  },[finalBoard]);
-
-  const resetGame=()=>{
+  const resetGame = (index) => {
     setMainBoxes(Array(9).fill(null));
-    
-    setWinner(null);
-    dispatch(clearIndexMiniBoard(11));
+
+     setWinner(null);
+     dispatch(clearIndexMiniBoard(11));
     dispatch(clearFinalBoard(Array(9).fill(null)));
-    //reset game test
-    dispatch(setResetGame(true));
-  }
- 
+
+    // //reset game test
+     //dispatch(setResetGame(true));///Este causa el error *Cannot update a component (`Square`) while rendering a different component (`Square`).
+  };
 
   return (
     <>
       <GlobalStyle />
       <MainBoardContainer>
-        {mainBoxes.map((_, index) => {
-          //big board game setup
-          let restrictThis = null;
-          
-          if(finalBoard[miniBoardIndex]){//si ya hay algo en la posicion no me deja marcar en esa pos pero si en cualquier otro lugar
-            restrictThis =false;
-            if (index === miniBoardIndex||finalBoard[index]) {//finalBoard[index] verifica que en esa casilla ya no haya un ganador//habilita casillas en la posicion correspondiente comparando el indice de los tableros pequenos con los grandes
-              restrictThis = true;
-            }
-          }else{
-            restrictThis =true;
-            if (index === miniBoardIndex||miniBoardIndex===11) {//habilita casillas en la posicion correspondiente comparando el indice de los tableros pequenos con los grandes
+       
+        { 
+        mainBoxes.map(
+          (_, index) => {
+            //big board game setup
+            // if(winner= true, reset =true && index <=8){
+            //   resetBoard(winner);
+            let restrictThis = null;
+
+            if (finalBoard[miniBoardIndex]) {
+              //si ya hay algo en la posicion no me deja marcar en esa pos pero si en cualquier otro lugar
               restrictThis = false;
+              if (index === miniBoardIndex || finalBoard[index]) {
+                //finalBoard[index] verifica que en esa casilla ya no haya un ganador//habilita casillas en la posicion correspondiente comparando el indice de los tableros pequenos con los grandes
+                restrictThis = true;
+              }
+            } else {
+              restrictThis = true;
+              if (index === miniBoardIndex || miniBoardIndex === 11) {
+                //habilita casillas en la posicion correspondiente comparando el indice de los tableros pequenos con los grandes
+                restrictThis = false;
+              }
             }
+           
+
+            return (
+              <BigBoardBoxCreation
+              bigBoardIndex={index}
+                key={index}
+                setMainBoxes={setMainBoxes}
+                restrictThis={restrictThis}
+                mainBoxes={mainBoxes}
+              />
+            );
           }
-          if (index>8){
-            dispatch(resetGameOver(false));
-          }
-          return (
-            <BigBoardBoxCreation
-              index={index}
-              key={index}
-              setMainBoxes={setMainBoxes}
-              restrictThis={restrictThis}
-              
-             
-            />
-          );
-        })}
+          // Llamar a la acción para reiniciar el juego
+        )
+        
+        }
       </MainBoardContainer>
+      
+       
+      
       <WinnerModal
         winner={winner}
         setMainBoxes={setMainBoxes}
