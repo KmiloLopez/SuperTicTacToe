@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MainBoard } from "../MainBoard/MainBoard.styled";
 import Square from "../Square/Square";
@@ -13,7 +13,7 @@ import { clearFinalBoard, setfinalBoardPosition } from "../../store/winnerSlice"
 import IsLastSquare from "../IsLastScuare/IsLastScuare";
 
 
-const App = ({ bigBoardIndex, restrictThis, mainBoxes }) => {
+const MiniBoard = ({ bigBoardIndex, restrictThis, mainBoxes }) => {
  // const board =[...mainBoxes];
   const [board, setBoard] = useState(mainBoxes);
   const [turn, setTurn] = useState(TURNS.X);
@@ -25,9 +25,13 @@ const App = ({ bigBoardIndex, restrictThis, mainBoxes }) => {
   const {reset} = useSelector((state)=>state.reset)
 
   //reseting game
-   //if(reset===true){
-   // console.log("reset en miniboard")
-   //}
+   if(reset===true){
+    console.log("reset en miniboard");
+    
+   }
+   useEffect(()=>{
+    setBoard(mainBoxes);
+   },[]);
   //setBoard(Array(9).fill(null));
   //   setTurn(TURNS.X);
     // setWinner(null);
@@ -141,4 +145,4 @@ const resetGame = () => {
   );
 };
 
-export default App;
+export default MiniBoard;

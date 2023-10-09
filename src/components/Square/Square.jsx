@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyledSquare } from './Square.styled'
 import { useDispatch, useSelector } from 'react-redux';
 import { setResetGame } from '../../store/resetSice';
@@ -12,11 +12,12 @@ const {reset} = useSelector((state)=>state.reset)
   // const [markCell, setMarkCell] = useState(null)
   const dispatch = useDispatch()
     
-    console.log('bigBoardIndex', bigBoardIndex)
-    if(bigBoardIndex ===8 &&index ===8&&reset===true){
-        dispatch(setResetGame(false))
-        return console.log("IsLastSc")
-    }
+ 
+    //console.log('bigBoardIndex', bigBoardIndex)
+    // if(bigBoardIndex ===8 &&index ===8&&reset===true){
+    //     dispatch(setResetGame(false))
+    //     return console.log("IsLastSc")
+    // }
     const handleClick =()=>{
         updateBoard(index);
         

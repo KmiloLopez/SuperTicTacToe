@@ -1,6 +1,6 @@
 import React from "react";
 import { BigBoardBoxStyle } from "./BigBoardBoxCreation.styled";
-import App from "../../MiniBoard/MiniBoard";
+import MiniBoard from "../../MiniBoard/MiniBoard";
 
 const BigBoardBoxCreation = ({ bigBoardIndex,restrictThis, mainBoxes  }) => {
   const handleClick = () => {
@@ -9,7 +9,7 @@ const BigBoardBoxCreation = ({ bigBoardIndex,restrictThis, mainBoxes  }) => {
   return (
     //clase restrictThis se agrega a todos lose elementos, menos donde queremos seguir con el siguiente turno
     <BigBoardBoxStyle className={restrictThis? "restrictthis":''}>
-      <App bigBoardIndex={bigBoardIndex} restrictThis={restrictThis} mainBoxes={mainBoxes}/>
+      <MiniBoard bigBoardIndex={bigBoardIndex} restrictThis={restrictThis} mainBoxes={mainBoxes}/>
     </BigBoardBoxStyle>
   );
 };

@@ -46,14 +46,24 @@ const Main = () => {
 
   const resetGame = (index) => {
     setMainBoxes(Array(9).fill(null));
-
+//const [hola, setHola]= useState("a")
      setWinner(null);
      dispatch(clearIndexMiniBoard(11));
     dispatch(clearFinalBoard(Array(9).fill(null)));
 
     // //reset game test
-     //dispatch(setResetGame(true));///Este causa el error *Cannot update a component (`Square`) while rendering a different component (`Square`).
+     dispatch(setResetGame(true));///Este causa el error *Cannot update a component (`Square`) while rendering a different component (`Square`).
   };
+  useEffect(() => {
+    dispatch(setResetGame(false))
+  }, [winner]);
+  // useEffect(() => {
+  //   if (winner !== null){
+  //     dispatch(setResetGame(true));
+  //     console.log('DISPATCHsetResetGame');
+  //   }
+    
+  // }, []);
 
   return (
     <>
