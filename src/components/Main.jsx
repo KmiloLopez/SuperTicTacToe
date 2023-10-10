@@ -8,10 +8,11 @@ import { WINNERCOMBOS } from "../utils/constants/constants";
 import WinnerModal from "./WinnerModal/WinnerModal";
 import { clearIndexMiniBoard } from "../store/indexSlice";
 import { clearFinalBoard } from "../store/winnerSlice";
-import { resetGameOver, setResetGame } from "../store/resetSice";
+import { setResetGame } from "../store/resetSice";
 
 const Main = () => {
   const dispatch = useDispatch();
+  //BIGBOARD
   const [mainBoxes, setMainBoxes] = useState(new Array(9).fill(null));
   console.log("This is MAINBOXES", mainBoxes);
   const [winner, setWinner] = useState(null);
@@ -19,6 +20,7 @@ const Main = () => {
   const miniBoardIndex = useSelector((state) => state.index.miniBoard);
   const { finalBoard } = useSelector((state) => state.winner);
   const { reset } = useSelector((state) => state.reset);
+
 
   const checkWinner = (boardToCheck) => {
     //comparamos el nuevo tablero con los combos ganadores
@@ -45,25 +47,17 @@ const Main = () => {
   }, [finalBoard]);
 
   const resetGame = (index) => {
-    setMainBoxes(Array(9).fill(null));
-//const [hola, setHola]= useState("a")
-     setWinner(null);
-     dispatch(clearIndexMiniBoard(11));
-    dispatch(clearFinalBoard(Array(9).fill(null)));
-
-    // //reset game test
-     dispatch(setResetGame(true));///Este causa el error *Cannot update a component (`Square`) while rendering a different component (`Square`).
+      dispatch(setResetGame(true));///Este causa el error *Cannot update a component (`Square`) while rendering a different component (`Square`).
   };
   useEffect(() => {
+    setMainBoxes(Array(9).fill(null));
+    setWinner(null);
+    dispatch(clearIndexMiniBoard(11));
+    dispatch(clearFinalBoard(Array(9).fill(null)));
+
     dispatch(setResetGame(false))
-  }, [winner]);
-  // useEffect(() => {
-  //   if (winner !== null){
-  //     dispatch(setResetGame(true));
-  //     console.log('DISPATCHsetResetGame');
-  //   }
-    
-  // }, []);
+  }, [reset]);
+
 
   return (
     <>
@@ -98,9 +92,11 @@ const Main = () => {
               <BigBoardBoxCreation
               bigBoardIndex={index}
                 key={index}
-                setMainBoxes={setMainBoxes}
+               
                 restrictThis={restrictThis}
-                mainBoxes={mainBoxes}
+               
+                
+              
               />
             );
           }
@@ -115,7 +111,7 @@ const Main = () => {
       <WinnerModal
         winner={winner}
         setMainBoxes={setMainBoxes}
-        // setTurn={setTurn}
+        
         setWinner={setWinner}
         resetGame={resetGame}
         // TURNS={TURNS}

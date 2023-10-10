@@ -8,43 +8,28 @@ import confetti from "canvas-confetti";
 //
 import { TURNS, WINNERCOMBOS } from "../../utils/constants/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { clearIndexMiniBoard, setIndexMiniBoard, setTurnforPlayer } from "../../store/indexSlice";
-import { clearFinalBoard, setfinalBoardPosition } from "../../store/winnerSlice";
-import IsLastSquare from "../IsLastScuare/IsLastScuare";
+import { setIndexMiniBoard, setTurnforPlayer } from "../../store/indexSlice";
+import { setfinalBoardPosition } from "../../store/winnerSlice";
 
 
-const MiniBoard = ({ bigBoardIndex, restrictThis, mainBoxes }) => {
- // const board =[...mainBoxes];
-  const [board, setBoard] = useState(mainBoxes);
+
+const MiniBoard = ({ bigBoardIndex, restrictThis}) => {
+ 
   const [turn, setTurn] = useState(TURNS.X);
-  const [winner, setWinner] = useState(null);
+   const [winnerMiniBoard, setWinnerMiniBoard] = useState(null);
   const [cellsTaken, setCellsTaken] = useState(1);
+
+  const [miniBoard, setMiniBoard] = useState(new Array(9).fill(null));
   const { turnPlayer } = useSelector((state) => state.index);
   const { finalBoard } = useSelector((state) => state.winner);
   const dispatch = useDispatch();
   const {reset} = useSelector((state)=>state.reset)
 
-  //reseting game
-   if(reset===true){
-    console.log("reset en miniboard");
-    
-   }
-   useEffect(()=>{
-    setBoard(mainBoxes);
-   },[]);
-  //setBoard(Array(9).fill(null));
-  //   setTurn(TURNS.X);
-    // setWinner(null);
-  //   setCellsTaken(1);
-   
-
-const resetGame = () => {
-  setMainBoxes(Array(9).fill(null));
-  setWinner(null);
-  dispatch(clearIndexMiniBoard(11));
-  dispatch(clearFinalBoard(Array(9).fill(null)));
+    useEffect(()=>{
+      setMiniBoard(new Array(9).fill(null));
+      setTurn(TURNS.X);
+   },[reset]);
   
-};
 
   const checkWinner = (boardToCheck) => {
     //comparamos el nuevo tablero con los combos ganadores
@@ -65,10 +50,10 @@ const resetGame = () => {
   };
 
   const updateBoard = (indexi) => {
-    const newBoard = [...board]; //siempre se requiere crear un array nuevo para no modificar directamente el board, o los props(estaria mal hecho, los estados hay que considerarlos como inmutables para evitar problemas de renderizado)
+    const newBoard = [...miniBoard]; //siempre se requiere crear un array nuevo para no modificar directamente el board, o los props(estaria mal hecho, los estados hay que considerarlos como inmutables para evitar problemas de renderizado)
     if (
       newBoard[indexi] === null &&
-      winner === null &&
+      winnerMiniBoard === null &&
       restrictThis === false
     ) {
       dispatch(setTurnforPlayer());
@@ -78,7 +63,7 @@ const resetGame = () => {
       //si en la posicion esta x asigne clase x
       //si en la posicion esta 0 asigne clase 0
       //si en la possicion esta null asing clase null
-      setBoard(newBoard); //actualizacion de board con la nueva info
+      setMiniBoard(newBoard); //actualizacion de board con la nueva info
       setTurn(turn === TURNS.X ? TURNS.O : TURNS.X); //toggle x/o
       setCellsTaken((prev) => prev + 1);
       console.log(cellsTaken);
@@ -95,7 +80,7 @@ const resetGame = () => {
         confetti();
       }
       if (cellsTaken === 9 && newScore == null) {
-        setWinner(false); //si ya se llenaron las casillas asignamos false a winner
+        setWinnerMiniBoard(false); //si ya se llenaron las casillas asignamos false a winner
       }
     } else {
       console.log("cell already taken");
@@ -105,7 +90,7 @@ const resetGame = () => {
     <>
       
       <MainBoard>
-        {board.map((element, index) => {
+        {miniBoard.map((element, index) => {
           if (element != null) {
             let classN = element; //each square gets its own class as the element content "x" or "o"
 
@@ -113,7 +98,7 @@ const resetGame = () => {
               <Square
                 key={index}
                 index={index}
-                board={board}
+                miniBoard={miniBoard}
                 updateBoard={updateBoard}
                 turn={turn}
                 classN={classN}
@@ -127,7 +112,7 @@ const resetGame = () => {
               <Square
                 key={index}
                 index={index}
-                board={board}
+                miniBoard={miniBoard}
                 updateBoard={updateBoard}
                 turn={turn}
                 classN={classN}
