@@ -32,7 +32,7 @@ export const SquareWinner = styled.div`
   border-radius: 5px;
   display: grid;
   place-items: center;
-  font-size: 48px;
+  font-size: 88px;
 
 `
 export const ButtonR = styled.button`
@@ -44,10 +44,15 @@ export const ButtonR = styled.button`
   width: 100px;
   border-radius: 5px;
   transition: 0.2s;
-  font-weight: bold;
+  font-size: 25px;
   cursor: pointer;
   &:hover{
     background: #eee;
   color: #222;
   }
+`
+export const WinnerText = styled.h2`
+  font-size:65px;
+  margin-bottom:0px;
+  margin-top:0px;
 `

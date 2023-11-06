@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MainBoardContainer = styled.div`
-    background-color: #fff;
+    
     display:grid;
     grid-template-columns: repeat(3,auto);
     justify-content: center;

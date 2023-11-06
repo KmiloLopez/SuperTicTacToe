@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonR, DivText, Section, SquareWinner } from './WinnerModal.styled'
+import { ButtonR, DivText, Section, SquareWinner, WinnerText } from './WinnerModal.styled'
 
 
 
@@ -23,18 +23,18 @@ const WinnerModal = ({winner,setMainBoxes,setTurn,setWinner,resetGame,setCellsTa
    {winner!==null && (//Si winner es diferente de null mostrara contenido, de otra forma no retornara nada.
     <Section>
         <DivText>
-            <h2>
+            <WinnerText>
                 {
                     winner === false
-                    ? 'Empate'
-                    : 'Ganó:'
+                    ? 'IS A TIE'
+                    : 'WINNER:'
                 }
-            </h2>
+            </WinnerText>
             <header className="win">
                 {winner && <SquareWinner>{winner}</SquareWinner>}
             </header>
             <footer>
-                <ButtonR onClick={handleClick}>Empezar de nuevo</ButtonR>
+                <ButtonR onClick={handleClick}>Restart</ButtonR>
             </footer>
         </DivText>
     </Section>

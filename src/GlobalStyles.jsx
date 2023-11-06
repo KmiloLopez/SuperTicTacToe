@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
   --x-color:#21B9DE;
   --game-background-color:#ffffff;
   --hover-color:#d0cdcd;
+  --green-color: rgba(94, 255, 51, 0.5);
   --big-square-size:150px;
   --square-size:40px;
   --mark-size:calc(var(--square-size)*.8);
@@ -40,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   margin: 0;
+  font-family: 'Ceviche One',Verdana, sans-serif;
 }
 
 ul{
@@ -59,6 +61,54 @@ button {
   padding: 0;
   margin: 0;
 }
+
+button {
+  font-size: 16px;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Main container */
+
+.main-container {
+  width: 350px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+.card {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  height: 300px;
+  margin: auto 1rem;
+  text-align: center;
+  font-family: arial;
+  margin-top:20px;
+  border-radius: 4px;
+  
+}
+
+ .text-container{
+  width: 300px;
+  height: 300px;
+  background-color: beige;
+  border:2px solid;
+  border-color: #d0cdcd;
+  border-radius: 4px;
+  
+ }
 
 `;
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MainBoard = styled.div`
+background-color: transparent;
   height: 100vh; /* 100% de la altura de la ventana */
   width: 100vw;
   display: grid;

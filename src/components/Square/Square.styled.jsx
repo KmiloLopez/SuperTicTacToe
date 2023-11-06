@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSquare = styled.div`
+background-color: transparent;
   position: relative;
   display: flex;
   justify-content: center;
