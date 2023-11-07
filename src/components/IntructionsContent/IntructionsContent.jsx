@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
-import { data } from '../../assets/data'
+import { data } from "../../assets/data"
 
 const IntructionsContent = () => {
+   
     useEffect(() => {}, [Carousel])
     const responsive = {
         superLargeDesktop: {
