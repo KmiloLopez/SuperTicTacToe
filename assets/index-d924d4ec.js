@@ -50,7 +50,7 @@ Error generating stack: `+i.message+`
     justify-items: center;
     height: 100vh; /* 100% de la altura de la ventana */
     width: 100vw;
-`,e0="/supertictactoe/assets/verdanab-174568c4.ttf",t0="/supertictactoe/assets/verdana-bbd6f974.ttf",n0=Zg`
+`,e0="/SuperTicTacToe/assets/verdanab-174568c4.ttf",t0="/SuperTicTacToe/assets/verdana-bbd6f974.ttf",n0=Zg`
 @font-face {
   font-family: 'Verdana';
   src: url(${t0}) format('truetype');
