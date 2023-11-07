@@ -37,9 +37,9 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KmiloLopez/SuperTicTacToe.git"
+    "url": "git+https://github.com/KmiloLopez/supertictactoe.git"
   },
   "bugs": {
-    "url": "https://github.com/KmiloLopez/SuperTicTacToe/issues"
+    "url": "https://github.com/KmiloLopez/supertictactoe/issues"
   }
 }
