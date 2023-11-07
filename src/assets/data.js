@@ -1,10 +1,10 @@
 export const data = [
     {
-        id:1, imgURL: "../src/assets/images/one.JPG", alt:"tic tac toe", text:"There are two different TicTacToe Boards, the bigger one in PINK and the small one in BLACK; You want to Win in the bigger one. Hit the right arrow to continue."
+        id:1, imgURL: "images/one.JPG", alt:"tic tac toe", text:"There are two different TicTacToe Boards, the bigger one in PINK and the small one in BLACK; You want to Win in the bigger one. Hit the right arrow to continue."
         
     },
     {
-        id:11, imgURL: "../../assets/images/one-one.JPG",alt:"tic tac toe", text:"You can see the available squares highlighted in green to make your next move."
+        id:11, imgURL: "assets/images/one-one.JPG",alt:"tic tac toe", text:"You can see the available squares highlighted in green to make your next move."
     },
     {
         id:2, imgURL: "src/assets/images/two.JPG",alt:"tic tac toe", text:"The square marked on the small board will determine the position where you should make your next move on the large board(PINK)."
