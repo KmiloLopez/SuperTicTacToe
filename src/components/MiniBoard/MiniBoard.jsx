@@ -46,6 +46,13 @@ const MiniBoard = ({ bigBoardIndex, restrictThis}) => {
         return boardToCheck[a]; // x u o
       }
     }
+    //TODO TIE
+    const filledMiniBoard=boardToCheck.every(element=> element!==null)
+       
+        if (filledMiniBoard){
+            return "t";
+        }
+
     return null;
   };
 
@@ -77,7 +84,10 @@ const MiniBoard = ({ bigBoardIndex, restrictThis}) => {
         //alert(`The winner is ${newScore}`) esta alerta saldra pero no se mostrar el tablero actualizado
 
         //setWinner(newScore); //actualizacion del estado ASINCRONO
-        confetti();
+        if(newScore!=="t"){
+          confetti();
+        }
+        
       }
       if (cellsTaken === 9 && newScore == null) {
         setWinnerMiniBoard(false); //si ya se llenaron las casillas asignamos false a winner

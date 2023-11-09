@@ -1,48 +1,64 @@
 import React from 'react'
-import { ButtonR, DivText, Section, SquareWinner, WinnerText } from './WinnerModal.styled'
+import {
+    ButtonR,
+    DivText,
+    Section,
+    SquareWinner,
+    TieText,
+    WinnerText,
+} from './WinnerModal.styled'
 
-
-
-
-const WinnerModal = ({winner,setMainBoxes,setTurn,setWinner,resetGame,setCellsTaken, TURNS}) => {
-    
-
-    const handleClick=() => {
+const WinnerModal = ({
+    winner,
+    setMainBoxes,
+    setTurn,
+    setWinner,
+    resetGame,
+    setCellsTaken,
+    TURNS,
+}) => {
+    const handleClick = () => {
         //reset game
-        resetGame();
-       
-        // setTurn(TURNS.X);
-        
-        //setCellsTaken(1);
-        
-       
-        
+        resetGame()
     }
-  return (
-   <>
-   {winner!==null && (//Si winner es diferente de null mostrara contenido, de otra forma no retornara nada.
-    <Section>
-        <DivText>
-            <WinnerText>
-                {
-                    winner === false
-                    ? 'IS A TIE'
-                    : 'WINNER:'
-                }
-            </WinnerText>
-            <header className="win">
-                {winner && <SquareWinner>{winner}</SquareWinner>}
-            </header>
-            <footer>
-                <ButtonR onClick={handleClick}>Restart</ButtonR>
-            </footer>
-        </DivText>
-    </Section>
-   )
-
-   }
-   </>
-  )
+    return (
+        <>
+            {winner !== null ? (
+                winner === false ? (
+                    <Section>
+                        <DivText>
+                            
+                            <TieText>
+                                That's a TIE!
+                            </TieText>
+                            
+                            <footer>
+                                <ButtonR onClick={handleClick}>Restart</ButtonR>
+                            </footer>
+                        </DivText>
+                    </Section>
+                ) : (
+                    <Section>
+                        <DivText>
+                            <WinnerText>
+                                'WINNER:'
+                            </WinnerText>
+                            <header className="win">
+                                {winner && (
+                                    <SquareWinner>{winner}</SquareWinner>
+                                )}
+                            </header>
+                            <footer>
+                                <ButtonR onClick={handleClick}>Restart</ButtonR>
+                            </footer>
+                        </DivText>
+                    </Section>
+                )
+            ) : (
+                ''
+            )}
+        </>
+    )
 }
 
 export default WinnerModal

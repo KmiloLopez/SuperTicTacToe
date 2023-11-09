@@ -56,3 +56,7 @@ export const WinnerText = styled.h2`
   margin-bottom:0px;
   margin-top:0px;
 `
+export const TieText = styled.h2`
+  font-size:65px;
+  margin:5px auto;
+`

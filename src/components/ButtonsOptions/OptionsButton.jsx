@@ -1,15 +1,17 @@
 import React from 'react'
-import { ButtonOptions } from './ButtonsOptions.styled'
+import { ButtonContainer, ButtonOptions } from './ButtonsOptions.styled'
 
-const ButtonsOptions = () => {
+const OptionsButton = () => {
     const showOptions = ()=>{
         const mainMenu =document.querySelector('#mainMenu');
         mainMenu.classList.remove('hide');
 
     }
-  return (
+  return (<ButtonContainer>
+
     <ButtonOptions onClick={(showOptions)}>Options</ButtonOptions>
+  </ButtonContainer>
   )
 }
 
-export default ButtonsOptions
+export default OptionsButton

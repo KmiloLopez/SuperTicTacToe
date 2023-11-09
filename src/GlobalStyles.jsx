@@ -1,9 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-import VerdanaBold from './assets/fonts/verdanab.ttf';
-import Verdana from './assets/fonts/verdana.ttf';
-
-
-
+import { createGlobalStyle } from 'styled-components'
+import VerdanaBold from './assets/fonts/verdanab.ttf'
+import Verdana from './assets/fonts/verdana.ttf'
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -30,6 +27,18 @@ const GlobalStyle = createGlobalStyle`
   --big-square-size:150px;
   --square-size:40px;
   --mark-size:calc(var(--square-size)*.8);
+
+  --big-square-size-desktop:200px;
+  --big-square-size-tablet:180px;
+  --big-square-size-mobile:100px;
+
+  --inner-square-size-desktop:55px;
+  --inner-square-size-tablet:50px;
+  --inner-square-size-mobile:28px;
+
+  --mark-size-desktop:calc(var(--inner-square-size-desktop)*.8);
+  --mark-size-tablet:calc(var(--inner-square-size-tablet)*.8);
+  --mark-size-mobile:calc(var(--inner-square-size-mobile)*.8);
 }
 
 
@@ -42,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
   font-family: 'Ceviche One',Verdana, sans-serif;
+  overflow: hidden;//desaparece barra lateral e inferior
 }
 
 ul{
@@ -110,6 +120,6 @@ button {
   
  }
 
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

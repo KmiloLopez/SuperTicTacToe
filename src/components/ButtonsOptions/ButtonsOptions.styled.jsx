@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 
 export const ButtonOptions = styled.button`
-padding:4px 8px;
-margin: 200px 200px;
-position: absolute;
+
+padding:4px 16px;
+margin-left: 50px;
+width: fit-content;
+//position: absolute;
 background-color: var(--green-color);
 transition: transform 0.5s;
 &:hover{
@@ -13,4 +15,7 @@ transition: transform 0.5s;
     color: black;
     cursor: pointer;
 }
+`
+export const ButtonContainer = styled.div`
+    margin: 10px auto;
 `
