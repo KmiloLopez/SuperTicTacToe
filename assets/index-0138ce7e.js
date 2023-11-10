@@ -587,7 +587,7 @@ background-color: transparent;
     height: 100vh; /* 100% de la altura de la ventana */
     width: 100vw;
     @media ${pe.mobile}{
-        top:-200px;
+        top:-150px;
     }
     @media ${pe.minTablet}{
         top:-100px;
