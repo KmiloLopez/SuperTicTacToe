@@ -15,7 +15,7 @@ export const GreenBackContainer = styled.div`
     height: 100vh; /* 100% de la altura de la ventana */
     width: 100vw;
     @media ${breakpoints.mobile}{
-        top:-260px;
+        top:-200px;
     }
     @media ${breakpoints.minTablet}{
         top:-100px;
@@ -61,4 +61,8 @@ export const SingleGreenBox = styled.div`
             background-color: transparent;
         }
     }
+`
+export const PositionContainer = styled.div`
+    
+    
 `

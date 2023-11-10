@@ -15,7 +15,7 @@ export const MenuContainer = styled.div`
     //width: 100vw;
     //height: 100vh;
     position: absolute;
-   
+   z-index: 2;
 
     &.hide {
         display: none;
