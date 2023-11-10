@@ -14,18 +14,16 @@ export const GreenBackContainer = styled.div`
     justify-items: center;
     height: 100vh; /* 100% de la altura de la ventana */
     width: 100vw;
-    @media ${breakpoints.maxMobile} {
-        
-        top:-227px;
+    @media ${breakpoints.mobile}{
+        top:-260px;
     }
-    @media ${breakpoints.minTablet} {
-        
-      top:-65px;
+    @media ${breakpoints.minTablet}{
+        top:-100px;
     }
-    @media ${breakpoints.desktop} {
-      
-     top:-25px;
+    @media ${breakpoints.desktop}{
+        top:-60px;
     }
+    
 `
 
 export const SingleGreenBox = styled.div`
@@ -51,9 +49,9 @@ export const SingleGreenBox = styled.div`
     }
 
     &.restricted {
-        animation: cambioColor 5s infinite alternate;
-        animation-delay: 5s;
-        animation-fill-mode: both;
+        animation: cambioColor 1.5s infinite alternate;
+        //animation-delay: 3s;
+        //animation-fill-mode: both;
     }
     @keyframes cambioColor {
         from {

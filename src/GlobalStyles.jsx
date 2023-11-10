@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
   --mark-size-desktop:calc(var(--inner-square-size-desktop)*.8);
   --mark-size-tablet:calc(var(--inner-square-size-tablet)*.8);
   --mark-size-mobile:calc(var(--inner-square-size-mobile)*.8);
+
+  --instructions-size-desktop:500px;
+  --instructions-size-tablet:470px;
+  --instructions-size-mobile:350px;
 }
 
 
@@ -101,8 +105,9 @@ button {
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 350px;
-  height: 300px;
-  margin: auto 1rem;
+  height: 80%;
+  //margin: auto 1rem;
+  margin: 0px auto;
   text-align: center;
   font-family: arial;
   margin-top:20px;
@@ -110,15 +115,7 @@ button {
   
 }
 
- .text-container{
-  width: 300px;
-  height: 300px;
-  background-color: beige;
-  border:2px solid;
-  border-color: #d0cdcd;
-  border-radius: 4px;
-  
- }
+ 
 
 `
 

@@ -9,7 +9,11 @@ import {
 } from './MainMenu.styled'
 import IntructionsContent from '../IntructionsContent/IntructionsContent'
 
-const MainMenu = ({resetGame}) => {
+
+//import { data } from "../../assets/data"
+import { data } from '../../../public/images/data'
+
+const MainMenu = ({ resetGame }) => {
     const startGame = () => {
         const mainMenu = document.getElementById('mainMenu')
         mainMenu.classList.add('hide')
@@ -18,21 +22,26 @@ const MainMenu = ({resetGame}) => {
         const instructionsBox = document.getElementById('instructions-box')
         instructionsBox.classList.add('show')
     }
-    const closeInstructions =()=>{
+    const closeInstructions = () => {
         const instructionsBox = document.getElementById('instructions-box')
         instructionsBox.classList.remove('show')
     }
-    const startNewGame =() => {
-        resetGame();
-        const mainMenu =document.querySelector('#mainMenu');
-        mainMenu.classList.add('hide');
+    const startNewGame = () => {
+        resetGame()
+        const mainMenu = document.querySelector('#mainMenu')
+        mainMenu.classList.add('hide')
     }
+
+   
+   
     return (
         <MenuContainer id="mainMenu">
             <ModalStart>
                 <InstructionsBox id="instructions-box">
-                    <IntructionsContent />
-                    <CloseButton onClick={closeInstructions}>&#xd7;</CloseButton>
+                    <IntructionsContent/>
+                    <CloseButton onClick={closeInstructions}>
+                        &#xd7;
+                    </CloseButton>
                 </InstructionsBox>
 
                 <TittleGame>SUPER Tic-Tac-Toe</TittleGame>
@@ -40,9 +49,7 @@ const MainMenu = ({resetGame}) => {
                 <OptionBox onClick={goToInstructions}>Instructions</OptionBox>
                 <OptionBox onClick={startGame}>Continue Game</OptionBox>
                 <OptionBox onClick={startNewGame}>Start New Game</OptionBox>
-
             </ModalStart>
-            
         </MenuContainer>
     )
 }

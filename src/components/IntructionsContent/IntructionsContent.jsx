@@ -3,11 +3,14 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
 //import { data } from "../../assets/data"
-import {data} from "../../../public/images/data"
+import { data } from '../../../public/images/data'
+import {
+    CardStyled,
+    ImageStyled,
+    TextContainer,
+} from './InstructionsContent.styled'
 
 const IntructionsContent = () => {
-   
-    useEffect(() => {}, [Carousel])
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -29,26 +32,28 @@ const IntructionsContent = () => {
     }
     const product = data.map((item) => {
         return (
-            <div className="card">
-                <img
-                    src={item.imgURL}
-                    alt={item.alt}
-                    style={{ width: 180, height: 'auto' }}
-                    className="product-image"
-                />
-                <div className="text-container">
+            <CardStyled>
+                <ImageStyled src={item.imgURL} alt={item.alt} />
+                <TextContainer>
                     <p>{item.text}</p>
-                </div>
-            </div>
+                </TextContainer>
+            </CardStyled>
         )
     })
 
     return (
-        <Carousel responsive={responsive}>
+        <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            infinite={true}
+            partialVisible={false}
+        >
             {product}
         </Carousel>
     )
 }
 
 export default IntructionsContent
-

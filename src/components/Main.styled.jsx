@@ -16,7 +16,7 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     //background-color: #c2a4de;
-    border: 16px solid black;
+    
     height: 100vh;
 `
 export const GameTittle = styled.h1`
