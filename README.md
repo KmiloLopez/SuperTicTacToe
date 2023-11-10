@@ -9,6 +9,8 @@
 
 Install dependencies:
 
+npm i
+
 ```
 ```
 
@@ -28,3 +30,11 @@ In this project, you can run the following scripts:
 | ------------- | ------------------------------------------------------- |
 | npm start     | Runs the app in the development mode.                   |
 
+#### Overview
+
++ A tic-tac-toe board is taken as an example and expanded to its extended version.
+
++ The players X and O are rendered as pseudo-elements of the individual squares.
+
+#### Contributors
+ALWAYS WELCOME

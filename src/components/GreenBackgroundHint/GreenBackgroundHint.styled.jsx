@@ -15,7 +15,7 @@ export const GreenBackContainer = styled.div`
     height: 100vh; /* 100% de la altura de la ventana */
     width: 100vw;
     @media ${breakpoints.mobile}{
-        top:-200px;
+        top:-175px;
     }
     @media ${breakpoints.minTablet}{
         top:-100px;
